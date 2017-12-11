@@ -1,4 +1,8 @@
-php-scripts
+High Score Widget
 ===========
 
-A repository of all my Open-Source php scripts.
+
+
+Orginally made by Kkev30 Link to orginal git https://github.com/Kkev30/php-scripts
+
+Can view working version of it here https://baileyland.ninja/hiscores/highscores.php
