@@ -40,7 +40,7 @@ else
 	else // *If the form is not empty, continue with downloading highscores.
 	{
   
-		$rawdata = file_get_contents("http://hiscore.runescape.com/index_lite.ws?player=$name");
+		$rawdata = file_get_contents("http://services.runescape.com/m=hiscore/index_lite.ws?player=$name");
 		fclose($rawdata);
   
 		$name = ucwords($name);
@@ -79,6 +79,8 @@ else
 			$Construction = explode(",",$SplitSkill[23]);
 			$Summoning = explode(",",$SplitSkill[24]);
 			$Dungeoneering = explode(",",$SplitSkill[25]);
+			$Divination = explode(",",$SplitSkill[26]);
+			$Invention = explode(",",$SplitSkill[27]); 
 			
 			//Add Commas to Values + Names
 			for ($i=0; $i<=3; $i++)
@@ -108,7 +110,10 @@ else
 			$Hunter[$i] = number_format($Hunter[$i]);			
 			$Construction[$i] = number_format($Construction[$i]);			
 			$Summoning[$i] = number_format($Summoning[$i]);			
-			$Dungeoneering[$i] = number_format($Dungeoneering[$i]);		
+			$Dungeoneering[$i] = number_format($Dungeoneering[$i]);
+			$Divination[$i] = number_format($Divination[$i]);
+			$Invention[$i] = number_format($Invention[$i]); 
+
 			} 
 			
 			echo '
@@ -220,11 +225,25 @@ else
 			 <tr>
 			 <td>
 			 <span class="hotspot" onmouseover="tooltipDungeoneering()" onmouseout="tooltip.hide();"><table width="68" height="27" background="interface/dungeoneering.png"> <tr> <td align="right"><span class="bottomleft"><font size="2" color="#ffffff">'.$Dungeoneering[1].'</font></span></td></tr></table></span></td><td>
-			<span class="hotspot" onmouseover="tooltipOverall()" onmouseout="tooltip.hide();"><table width="131" height="27" background="interface/overall.png"> <tr> <td align="middle"><span class="bottomleft"><font size="1" color="#ffffff">Total Level: '.$Overall[1].'</font></span></td> </tr> </table></span></td>
-			<table width="199" height="8" background="interface/bottom.png"><tr><td></tr></td></table>
+			 <span class="hotspot" onmouseover="tooltipDivination()" onmouseout="tooltip.hide();"><table width="62" height="28" background="interface/divination.png"> <tr> <td align="right"><span class="middleleft"> <font size="2" color="#ffffff">'.$Divination[1].'</font></span></td></tr></table></span></td><td>
+			<span class="hotspot" onmouseover="tooltipInvention()" onmouseout="tooltip.hide();"><table width="62" height="28" background="interface/invention.png"> <tr> <td align="right"><span class="middleright"><font size="2" color="#ffffff">'.$Invention[1].'</font></span></td> </tr> </table></span>
 			</table>
 			</td> </table></center>
 			 ';
+			
+			echo '	
+			<table width="199"  cellpadding="5" cellspacing="0"> 
+			 <tr>
+			 <td>
+
+
+		 <span class="hotspot" onmouseover="tooltipOverall()" onmouseout="tooltip.hide();"><table width="199" height="27" background="interface/overall.png"> <tr> <td align="middle"><span class="bottomleft"><font size="1" color="#ffffff">Total Level: '.$Overall[1].'</font></span></td> </tr> </table></span></td>			<table width="199" height="8" background="interface/bottom.png"><tr><td></tr></td></table>
+
+			</table>
+			 ';
+			
+			
+			
 		}
 		else
 		{
@@ -376,6 +395,16 @@ tooltip.show('<IMG SRC="interface/isummoning.png" ALIGN=RIGHT><b>Summoning&nbsp;
 function tooltipDungeoneering()
 {
 tooltip.show('<IMG SRC="interface/idungeoneering.png" ALIGN=RIGHT><b>Dungeoneering&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Rank:</b> #<?php echo $Dungeoneering[0];?> <br><b>Experience:</b> <?php echo $Dungeoneering[2];?>');
+}
+
+function tooltipDivination()
+{
+tooltip.show('<IMG SRC="interface/idivination.png" ALIGN=RIGHT><b>Divination&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Rank:</b> #<?php echo $Divination[0];?> <br><b>Experience:</b> <?php echo $Divination[2];?>');
+}
+
+function tooltipInvention()
+{
+tooltip.show('<IMG SRC="interface/IInvention.png" ALIGN=RIGHT><b>Invention&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Rank:</b> #<?php echo $Invention[0];?> <br><b>Experience:</b> <?php echo $Invention[2];?>');
 }
 
 function tooltipOverall()
